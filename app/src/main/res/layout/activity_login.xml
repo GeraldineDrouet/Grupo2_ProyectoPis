@@ -125,6 +125,7 @@
         android:drawableLeft="@drawable/ic_pass"
         android:drawablePadding="13dp"
         android:hint="@string/contrase_a"
+        android:inputType="textPassword"
         android:textSize="20sp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
