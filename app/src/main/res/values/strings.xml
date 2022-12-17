@@ -10,4 +10,12 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+    <string name="registro">REGISTRO</string>
+    <string name="iniciar_sesi_n">Iniciar Sesión</string>
+    <string name="nombre_completo">Nombre Completo</string>
+    <string name="direcci_n">Dirección</string>
+    <string name="tel_fono">Teléfono</string>
+    <string name="correo_electr_nico">Correo Electrónico</string>
+    <string name="contrase_a">Contraseña</string>
+    <string name="iniciar_sesi_nlog">INICIAR SESIÓN</string>
 </resources>
