@@ -18,4 +18,8 @@
     <string name="correo_electr_nico">Correo Electrónico</string>
     <string name="contrase_a">Contraseña</string>
     <string name="iniciar_sesi_nlog">INICIAR SESIÓN</string>
+    <string name="men_diario">Menú Diario</string>
+    <string name="ofertas_tiempo_limitado">Ofertas Tiempo Limitado</string>
+    <string name="pedidos">Pedidos</string>
+    <string name="carrito_de_compras">Carrito de Compras</string>
 </resources>

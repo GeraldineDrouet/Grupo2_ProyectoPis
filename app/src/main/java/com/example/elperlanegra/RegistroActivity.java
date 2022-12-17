@@ -63,8 +63,9 @@ public class RegistroActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 createUser();
-                pb_reg.setVisibility(View.VISIBLE);
-                startActivity(new Intent(RegistroActivity.this, LoginActivity.class));
+
+                //pb_reg.setVisibility(View.VISIBLE);
+
 
             }
         });
@@ -123,11 +124,13 @@ public class RegistroActivity extends AppCompatActivity {
                             String id = task.getResult().getUser().getUid();
                             db.getReference().child("Users").child(id).setValue(modeloUser);
 
-                            pb_reg.setVisibility(View.GONE);
+                            pb_reg.setVisibility(View.VISIBLE);
 
                             Toast.makeText(RegistroActivity.this, "¡REGISTRO EXITOSO!", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(RegistroActivity.this, LoginActivity.class));
                         } else {
                             pb_reg.setVisibility(View.GONE);
+
                             Toast.makeText(RegistroActivity.this, "Error: "+task.getException(), Toast.LENGTH_SHORT).show();
                         }
                     }

@@ -56,8 +56,8 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 loginUser();
-                pb_log.setVisibility(View.VISIBLE);
-                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                //pb_log.setVisibility(View.VISIBLE);
+
             }
         });
     }
@@ -90,8 +90,9 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
-                            pb_log.setVisibility(View.GONE);
+                            pb_log.setVisibility(View.VISIBLE);
                             Toast.makeText(LoginActivity.this, "¡INICIO DE SESIÓN EXITOSO!", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
                         } else {
                             pb_log.setVisibility(View.GONE);
                             Toast.makeText(LoginActivity.this, "Error: "+ task.getException(), Toast.LENGTH_SHORT).show();
