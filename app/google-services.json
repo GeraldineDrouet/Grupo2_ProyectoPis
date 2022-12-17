@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "239023911944",
+    "project_id": "elperlav2",
+    "storage_bucket": "elperlav2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:239023911944:android:ce61cf2e10151f38f5cdbd",
+        "android_client_info": {
+          "package_name": "com.example.elperlanegra"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "239023911944-59e63g8p6a4072idm65jmbrsamb0b818.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBeHp1Mya-Rq65-K97K2cu0KZ6sgLAiSLw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "239023911944-59e63g8p6a4072idm65jmbrsamb0b818.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
