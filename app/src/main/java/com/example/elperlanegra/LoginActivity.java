@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,12 +26,17 @@ public class LoginActivity extends AppCompatActivity {
 
     FirebaseAuth auth;
 
+    ProgressBar pb_log;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
         auth = FirebaseAuth.getInstance();
+
+        pb_log = findViewById(R.id.pb_log);
+        pb_log.setVisibility(View.GONE);
 
         logBtn = findViewById(R.id.buttonLog);
         regEnLog = findViewById(R.id.tv_regLog);
@@ -50,6 +56,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 loginUser();
+                pb_log.setVisibility(View.VISIBLE);
                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
             }
         });
@@ -83,8 +90,10 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
+                            pb_log.setVisibility(View.GONE);
                             Toast.makeText(LoginActivity.this, "¡INICIO DE SESIÓN EXITOSO!", Toast.LENGTH_SHORT).show();
                         } else {
+                            pb_log.setVisibility(View.GONE);
                             Toast.makeText(LoginActivity.this, "Error: "+ task.getException(), Toast.LENGTH_SHORT).show();
                         }
                     }
