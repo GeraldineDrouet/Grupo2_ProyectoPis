@@ -1,5 +1,6 @@
 package com.example.elperlanegra.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,12 +15,19 @@ import com.bumptech.glide.Glide;
 import com.example.elperlanegra.R;
 import com.example.elperlanegra.modelos.ModeloCategInicio;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CategInicioAdapter extends RecyclerView.Adapter<CategInicioAdapter.ViewHolder>{
 
+    //ActualizarRecProd actualizarRecProd;
+    //Activity activity;
     Context context;
     List<ModeloCategInicio> modeloCategInicioList;
+
+    //boolean check = true;
+    //boolean select = true;
+    //int row_index = -1;
 
     public CategInicioAdapter(Context context, List<ModeloCategInicio> modeloCategInicioList) {
         this.context = context;

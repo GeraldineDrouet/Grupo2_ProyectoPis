@@ -29,4 +29,6 @@
     <string name="perfil">Perfil</string>
     <string name="nombre_usuario">Nombre Usuario</string>
     <string name="user1234_gmail_com">user1234@gmail.com</string>
+    <string name="nombre">Nombre</string>
+    <string name="apellido">Apellido</string>
 </resources>

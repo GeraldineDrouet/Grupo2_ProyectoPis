@@ -2,63 +2,78 @@ package com.example.elperlanegra;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link PerfilFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import com.example.elperlanegra.adapter.DatosActualesAdapter;
+import com.example.elperlanegra.modelos.ModeloDatosActualesUser;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class PerfilFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    RecyclerView datosActualesRec;
+    FirebaseDatabase db;
+    DatabaseReference usersRef;
+    FirebaseAuth auth;
+    FirebaseUser  user;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public PerfilFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment PerfilFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static PerfilFragment newInstance(String param1, String param2) {
-        PerfilFragment fragment = new PerfilFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+    List<ModeloDatosActualesUser> modeloDatosActualesUserList;
+    DatosActualesAdapter datosActualesAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_perfil, container, false);
+        View root = inflater.inflate(R.layout.fragment_perfil,container,false);
+
+        db = FirebaseDatabase.getInstance();
+        auth = FirebaseAuth.getInstance();
+        user = auth.getCurrentUser();
+        usersRef = db.getReference("Users").child(auth.getUid());
+
+        datosActualesRec = root.findViewById(R.id.datosActuales_rec);
+        datosActualesRec.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false));
+
+        modeloDatosActualesUserList = new ArrayList<>();
+        datosActualesAdapter = new DatosActualesAdapter(getActivity(),modeloDatosActualesUserList);
+        datosActualesRec.setAdapter(datosActualesAdapter);
+
+        usersRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                modeloDatosActualesUserList.clear();
+                for(DataSnapshot snapshot :
+                        datasnapshot.getChildren()) {
+                    ModeloDatosActualesUser user = datasnapshot.getValue(ModeloDatosActualesUser.class);
+                    modeloDatosActualesUserList.add(user);
+                    String nombre = user.getNombre();
+                    String direccion = user.getDireccion();
+                    String correo = user.getCorreo();
+                    String telefono = user.getTelefono();
+
+                    String uid = datasnapshot.getKey();
+                } datosActualesAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                System.out.println("The read failed: " + databaseError.getCode());
+            }
+        });
+        return root;
     }
 }

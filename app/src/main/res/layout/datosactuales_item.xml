@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="5dp"
+    android:layout_margin="5dp"
+    android:background="#b07e69">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="5dp"
+        android:background="#b07e69">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nombre: "
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="10sp"
+                android:fontFamily="@font/amita"/>
+
+            <TextView
+                android:id="@+id/datos_nombre_rec"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="nombre"
+                android:textColor="@color/black"
+                android:textSize="10sp"
+                android:fontFamily="@font/amita"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Apellido: "
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="10sp"
+                android:fontFamily="@font/amita"/>
+
+            <TextView
+                android:id="@+id/datos_apellidoo_rec"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="apellido"
+                android:textColor="@color/black"
+                android:textSize="10sp"
+                android:fontFamily="@font/amita"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dirección: "
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="10sp"
+                android:fontFamily="@font/amita"/>
+
+            <TextView
+                android:id="@+id/datos_direccion_rec"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="direccion"
+                android:textColor="@color/black"
+                android:textSize="10sp"
+                android:fontFamily="@font/amita"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Correo electrónico: "
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="10sp"
+                android:fontFamily="@font/amita"/>
+
+            <TextView
+                android:id="@+id/datos_correo_rec"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="correo electronico"
+                android:textColor="@color/black"
+                android:textSize="10sp"
+                android:fontFamily="@font/amita"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Teléfono: "
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="10sp"
+                android:fontFamily="@font/amita"/>
+
+            <TextView
+                android:id="@+id/datos_telefono_rec"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="telefono"
+                android:textColor="@color/black"
+                android:textSize="10sp"
+                android:fontFamily="@font/amita"/>
+        </LinearLayout>
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>

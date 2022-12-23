@@ -23,7 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class RegistroActivity extends AppCompatActivity {
 
     Button regBtn;
-    EditText nombre, direccion, telefono, correo, contrasena;
+    EditText nombre, apellido, direccion, telefono, correo, contrasena;
     TextView logEnReg;
 
     FirebaseAuth auth;
@@ -45,6 +45,7 @@ public class RegistroActivity extends AppCompatActivity {
         regBtn = findViewById(R.id.buttonReg);
         logEnReg = findViewById(R.id.tv_logReg);
         nombre = findViewById(R.id.et_nombre);
+        apellido = findViewById(R.id.et_apellido);
         direccion = findViewById(R.id.et_direccion);
         telefono = findViewById(R.id.et_telefono);
         correo = findViewById(R.id.et_correo);
@@ -73,6 +74,7 @@ public class RegistroActivity extends AppCompatActivity {
 
     private void createUser() {
         String userNombre = nombre.getText().toString();
+        String userApellido = apellido.getText().toString();
         String userDireccion = direccion.getText().toString();
         String userTelefono = telefono.getText().toString();
         String userCorreo = correo.getText().toString();
@@ -80,7 +82,13 @@ public class RegistroActivity extends AppCompatActivity {
 
         ///nombre
         if (TextUtils.isEmpty(userNombre)){
-            Toast.makeText(this, "¡Campo <Nombre Completo> está vacío!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "¡Campo <Nombre> está vacío!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        ///apellido
+        if (TextUtils.isEmpty(userApellido)){
+            Toast.makeText(this, "¡Campo <Apellido> está vacío!", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -120,7 +128,7 @@ public class RegistroActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
 
-                            ModeloUser modeloUser = new ModeloUser(userNombre,userDireccion,userTelefono,userCorreo,userContrasena);
+                            ModeloUser modeloUser = new ModeloUser(userNombre,userApellido,userDireccion,userTelefono,userCorreo,userContrasena);
                             String id = task.getResult().getUser().getUid();
                             db.getReference().child("Users").child(id).setValue(modeloUser);
 

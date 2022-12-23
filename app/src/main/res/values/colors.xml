@@ -12,4 +12,6 @@
     <color name="gray">#393d40</color>
     <color name="darkgray">#27282c</color>
     <color name="mediumgray">#262523</color>
+
+    <color name="yellow">#ffd503</color>
 </resources>

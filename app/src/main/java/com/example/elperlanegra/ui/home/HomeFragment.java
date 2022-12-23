@@ -18,7 +18,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.elperlanegra.R;
 import com.example.elperlanegra.adapter.CategInicioAdapter;
+import com.example.elperlanegra.adapter.ProductosInicioAdapter;
 import com.example.elperlanegra.modelos.ModeloCategInicio;
+import com.example.elperlanegra.modelos.ModeloProducto;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -35,15 +37,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HomeFragment extends Fragment {
-
+    //para mostrar nombre de usuario
     TextView nombreUser;
-    RecyclerView inicioCatRec;
+    //recyclerviews de inicio
+    RecyclerView inicioCatRec,productosRec;
+    //firebase
     FirebaseFirestore db;
     FirebaseDatabase database;
 
     //Categorias items
     List<ModeloCategInicio> modeloCategInicioList;
     CategInicioAdapter categInicioAdapter;
+
+    //Productos items
+    List<ModeloProducto> modeloProductoList;
+    ProductosInicioAdapter productosInicioAdapter;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -52,6 +60,7 @@ public class HomeFragment extends Fragment {
         db = FirebaseFirestore.getInstance();
         database = FirebaseDatabase.getInstance();
         inicioCatRec = root.findViewById(R.id.rec_categInicio);
+        productosRec = root.findViewById(R.id.rec_prodInicio);
         nombreUser = root.findViewById(R.id.tv_nombreUser);
 
         //MOSTRAR NOMBRE DE USUARIO
@@ -75,6 +84,8 @@ public class HomeFragment extends Fragment {
         modeloCategInicioList = new ArrayList<>();
         categInicioAdapter = new CategInicioAdapter(getActivity(),modeloCategInicioList);
         inicioCatRec.setAdapter(categInicioAdapter);
+        inicioCatRec.setHasFixedSize(true);
+        inicioCatRec.setNestedScrollingEnabled(false);
 
         db.collection("Categorias")
                 .get()
@@ -92,6 +103,14 @@ public class HomeFragment extends Fragment {
                         }
                     }
                 });
+
+        //PRODUCTOS INICIO
+        productosRec.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.VERTICAL,false));
+        modeloProductoList = new ArrayList<>();
+        productosInicioAdapter = new ProductosInicioAdapter(getActivity(),modeloProductoList);
+        productosRec.setAdapter(productosInicioAdapter);
+        productosRec.setHasFixedSize(true);
+        productosRec.setNestedScrollingEnabled(false);
         return root;
     }
 

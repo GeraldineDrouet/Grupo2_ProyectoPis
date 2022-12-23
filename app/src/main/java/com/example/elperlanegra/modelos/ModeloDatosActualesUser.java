@@ -1,23 +1,21 @@
 package com.example.elperlanegra.modelos;
 
-public class ModeloUser {
+public class ModeloDatosActualesUser {
     String nombre;
     String apellido;
     String direccion;
     String telefono;
     String correo;
-    String contrasena;
 
-    public ModeloUser() {
+    public ModeloDatosActualesUser() {
     }
 
-    public ModeloUser(String nombre, String apellido, String direccion, String telefono, String correo, String contrasena) {
+    public ModeloDatosActualesUser(String nombre, String apellido, String direccion, String telefono, String correo) {
         this.nombre = nombre;
-        this.apellido =apellido;
+        this.apellido = apellido;
         this.direccion = direccion;
         this.telefono = telefono;
         this.correo = correo;
-        this.contrasena = contrasena;
     }
 
     public String getNombre() {
@@ -58,13 +56,5 @@ public class ModeloUser {
 
     public void setCorreo(String correo) {
         this.correo = correo;
-    }
-
-    public String getContrasena() {
-        return contrasena;
-    }
-
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
     }
 }
